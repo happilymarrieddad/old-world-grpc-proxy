@@ -92,6 +92,9 @@ func run() error {
 	if err := v1userarmiespb.RegisterV1UserArmiesHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts); err != nil {
 		return err
 	}
+	if err := v1userarmiespb.RegisterV1UserArmyUnitsHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts); err != nil {
+		return err
+	}
 
 	// Start HTTP server (and proxy calls to gRPC server endpoint)
 	port := int(8081)

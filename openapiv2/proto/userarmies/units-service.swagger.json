@@ -4,6 +4,11 @@
     "title": "proto/userarmies/units-service.proto",
     "version": "version not set"
   },
+  "tags": [
+    {
+      "name": "V1UserArmyUnits"
+    }
+  ],
   "consumes": [
     "application/json"
   ],
@@ -37,6 +42,55 @@
             "type": "object",
             "$ref": "#/definitions/protobufAny"
           }
+        }
+      }
+    },
+    "userarmiesUpdateUnitReply": {
+      "type": "object"
+    },
+    "userarmiesUpdateUserArmyUnit": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "qtyNull": {
+          "type": "boolean"
+        },
+        "qtyValue": {
+          "type": "string",
+          "format": "int64"
+        },
+        "optionValues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/userarmiesUpdateUserArmyUnitOptionValue"
+          }
+        }
+      }
+    },
+    "userarmiesUpdateUserArmyUnitOptionValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "isSelected": {
+          "type": "boolean"
+        },
+        "indexSelected": {
+          "type": "string"
+        },
+        "idsSelected": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qtySelected": {
+          "type": "string",
+          "format": "int64"
         }
       }
     }
