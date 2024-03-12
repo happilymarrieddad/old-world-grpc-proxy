@@ -2,11 +2,11 @@
 // source: proto/compositionTypes/composition-types.proto
 
 /*
-Package compositiontypes is a reverse proxy.
+Package compositionTypes is a reverse proxy.
 
 It translates gRPC into RESTful JSON APIs.
 */
-package compositiontypes
+package compositionTypes
 
 import (
 	"context"
