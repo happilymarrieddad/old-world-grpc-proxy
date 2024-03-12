@@ -128,6 +128,46 @@
         }
       }
     },
+    "unittypesUnitOptionValue": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "userArmyUnitId": {
+          "type": "string"
+        },
+        "userArmyUnitName": {
+          "type": "string"
+        },
+        "unitOptionId": {
+          "type": "string"
+        },
+        "unitOptionName": {
+          "type": "string"
+        },
+        "isSelected": {
+          "type": "boolean"
+        },
+        "indexSelected": {
+          "type": "string"
+        },
+        "idsSelected": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "qtySelected": {
+          "type": "string",
+          "format": "int64"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
     "unittypesUnitStatistic": {
       "type": "object",
       "properties": {
@@ -318,6 +358,9 @@
         "createdAt": {
           "type": "string",
           "format": "date-time"
+        },
+        "value": {
+          "$ref": "#/definitions/unittypesUnitOptionValue"
         }
       }
     }
