@@ -18,7 +18,7 @@ import (
 
 	v1armytypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/armytypes"
 	authpb "github.com/happilymarrieddad/grpc-proxy/pb/proto/auth"
-	v1compositiontypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/compositiontypes"
+	v1compositiontypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/compositionTypes"
 	v1gamespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/games"
 	v1itemtypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/itemtypes"
 	v1optiontypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/optiontypes"
