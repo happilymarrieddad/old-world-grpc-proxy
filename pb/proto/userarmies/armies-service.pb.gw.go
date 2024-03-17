@@ -187,6 +187,32 @@ func local_request_V1UserArmies_RemoveUnit_0(ctx context.Context, marshaler runt
 
 }
 
+func request_V1UserArmies_UpdateUserArmy_0(ctx context.Context, marshaler runtime.Marshaler, client V1UserArmiesClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateUserArmyRequest
+	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := client.UpdateUserArmy(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
+	return msg, metadata, err
+
+}
+
+func local_request_V1UserArmies_UpdateUserArmy_0(ctx context.Context, marshaler runtime.Marshaler, server V1UserArmiesServer, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
+	var protoReq UpdateUserArmyRequest
+	var metadata runtime.ServerMetadata
+
+	if err := marshaler.NewDecoder(req.Body).Decode(&protoReq); err != nil && err != io.EOF {
+		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
+	}
+
+	msg, err := server.UpdateUserArmy(ctx, &protoReq)
+	return msg, metadata, err
+
+}
+
 // RegisterV1UserArmiesHandlerServer registers the http handlers for service V1UserArmies to "mux".
 // UnaryRPC     :call V1UserArmiesServer directly.
 // StreamingRPC :currently unsupported pending https://github.com/grpc/grpc-go/issues/906.
@@ -340,6 +366,31 @@ func RegisterV1UserArmiesHandlerServer(ctx context.Context, mux *runtime.ServeMu
 		}
 
 		forward_V1UserArmies_RemoveUnit_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
+	mux.Handle("POST", pattern_V1UserArmies_UpdateUserArmy_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		var stream runtime.ServerTransportStream
+		ctx = grpc.NewContextWithServerTransportStream(ctx, &stream)
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateIncomingContext(ctx, mux, req, "/userarmies.V1UserArmies/UpdateUserArmy", runtime.WithHTTPPathPattern("/userarmies.V1UserArmies/UpdateUserArmy"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := local_request_V1UserArmies_UpdateUserArmy_0(annotatedContext, inboundMarshaler, server, req, pathParams)
+		md.HeaderMD, md.TrailerMD = metadata.Join(md.HeaderMD, stream.Header()), metadata.Join(md.TrailerMD, stream.Trailer())
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_V1UserArmies_UpdateUserArmy_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -516,6 +567,28 @@ func RegisterV1UserArmiesHandlerClient(ctx context.Context, mux *runtime.ServeMu
 
 	})
 
+	mux.Handle("POST", pattern_V1UserArmies_UpdateUserArmy_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+		ctx, cancel := context.WithCancel(req.Context())
+		defer cancel()
+		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
+		var err error
+		var annotatedContext context.Context
+		annotatedContext, err = runtime.AnnotateContext(ctx, mux, req, "/userarmies.V1UserArmies/UpdateUserArmy", runtime.WithHTTPPathPattern("/userarmies.V1UserArmies/UpdateUserArmy"))
+		if err != nil {
+			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
+			return
+		}
+		resp, md, err := request_V1UserArmies_UpdateUserArmy_0(annotatedContext, inboundMarshaler, client, req, pathParams)
+		annotatedContext = runtime.NewServerMetadataContext(annotatedContext, md)
+		if err != nil {
+			runtime.HTTPError(annotatedContext, mux, outboundMarshaler, w, req, err)
+			return
+		}
+
+		forward_V1UserArmies_UpdateUserArmy_0(annotatedContext, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
+
+	})
+
 	return nil
 }
 
@@ -531,6 +604,8 @@ var (
 	pattern_V1UserArmies_AddUnit_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"userarmies.V1UserArmies", "AddUnit"}, ""))
 
 	pattern_V1UserArmies_RemoveUnit_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"userarmies.V1UserArmies", "RemoveUnit"}, ""))
+
+	pattern_V1UserArmies_UpdateUserArmy_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1}, []string{"userarmies.V1UserArmies", "UpdateUserArmy"}, ""))
 )
 
 var (
@@ -545,4 +620,6 @@ var (
 	forward_V1UserArmies_AddUnit_0 = runtime.ForwardResponseMessage
 
 	forward_V1UserArmies_RemoveUnit_0 = runtime.ForwardResponseMessage
+
+	forward_V1UserArmies_UpdateUserArmy_0 = runtime.ForwardResponseMessage
 )
