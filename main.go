@@ -29,37 +29,18 @@ import (
 )
 
 var (
-	// command-line options:
-	// gRPC server endpoint
 	grpcServerEndpoint = flag.String("grpc-server-endpoint", "localhost:50051", "gRPC server endpoint")
 )
-
-// TODO: figure out how to do this
-// func serveSwagger(mux *runtime.ServeMux) {
-// 	mime.AddExtensionType(".svg", "image/svg+xml")
-
-// 	// Expose files in third_party/swagger-ui/ on <host>/swagger-ui
-// 	fileServer := http.FileServer(&assetfs.AssetFS{
-// 		Asset:    swagger.Asset,
-// 		AssetDir: swagger.AssetDir,
-// 		Prefix:   "third_party/swagger-ui",
-// 	})
-// 	prefix := "/swagger-ui/"
-// 	mux.Handle("GET", prefix, runtime.HandlerFunc(fileServer),
-
-// 	http.StripPrefix(prefix, fileServer))
-// }
 
 func run() error {
 	ctx := context.Background()
 	ctx, cancel := context.WithCancel(ctx)
 	defer cancel()
 
-	// Register gRPC server endpoint
-	// Note: Make sure the gRPC server is running properly and accessible
 	mux := runtime.NewServeMux()
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(insecure.NewCredentials())}
 
+	// Auth
 	if err := authpb.RegisterAuthHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts); err != nil {
 		return err
 	}
