@@ -1,0 +1,161 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "proto/items/items-service.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "V1Items"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {},
+  "definitions": {
+    "itemsCreateArmyItem": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "points": {
+          "type": "string",
+          "format": "int64"
+        },
+        "gameId": {
+          "type": "string"
+        },
+        "armyTypeId": {
+          "type": "string"
+        },
+        "itemTypeId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "story": {
+          "type": "string"
+        }
+      }
+    },
+    "itemsEmptyReply": {
+      "type": "object"
+    },
+    "itemsGetItemReply": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "$ref": "#/definitions/itemsItem"
+        }
+      }
+    },
+    "itemsGetItemsReply": {
+      "type": "object",
+      "properties": {
+        "items": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/itemsItem"
+          }
+        }
+      }
+    },
+    "itemsItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "points": {
+          "type": "string",
+          "format": "int64"
+        },
+        "itemTypeId": {
+          "type": "string"
+        },
+        "itemTypeName": {
+          "type": "string"
+        },
+        "gameId": {
+          "type": "string"
+        },
+        "armyTypeId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "story": {
+          "type": "string"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "itemsUpdateItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "points": {
+          "type": "string",
+          "format": "int64"
+        },
+        "description": {
+          "type": "string"
+        },
+        "story": {
+          "type": "string"
+        }
+      }
+    },
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    }
+  }
+}

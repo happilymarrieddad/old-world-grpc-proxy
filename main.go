@@ -20,6 +20,7 @@ import (
 	authpb "github.com/happilymarrieddad/grpc-proxy/pb/proto/auth"
 	v1compositiontypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/compositiontypes"
 	v1gamespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/games"
+	v1itemspb "github.com/happilymarrieddad/grpc-proxy/pb/proto/items"
 	v1itemtypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/itemtypes"
 	v1optiontypespb "github.com/happilymarrieddad/grpc-proxy/pb/proto/optiontypes"
 	v1statisticspb "github.com/happilymarrieddad/grpc-proxy/pb/proto/statistics"
@@ -74,6 +75,9 @@ func run() error {
 		return err
 	}
 	if err := v1userarmiespb.RegisterV1UserArmyUnitsHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts); err != nil {
+		return err
+	}
+	if err := v1itemspb.RegisterV1ItemsHandlerFromEndpoint(ctx, mux, *grpcServerEndpoint, opts); err != nil {
 		return err
 	}
 
