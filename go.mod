@@ -1,6 +1,6 @@
 module github.com/happilymarrieddad/grpc-proxy
 
-go 1.21.3
+go 1.20
 
 require (
 	github.com/grpc-ecosystem/grpc-gateway/v2 v2.19.1
