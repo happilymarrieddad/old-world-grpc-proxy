@@ -35,6 +35,14 @@
         }
       }
     },
+    "gamesGetGameReply": {
+      "type": "object",
+      "properties": {
+        "game": {
+          "$ref": "#/definitions/gamesGame"
+        }
+      }
+    },
     "gamesGetGamesReply": {
       "type": "object",
       "properties": {
