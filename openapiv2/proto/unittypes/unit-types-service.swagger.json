@@ -367,6 +367,12 @@
         },
         "value": {
           "$ref": "#/definitions/unittypesUnitOptionValue"
+        },
+        "displayOption": {
+          "type": "string"
+        },
+        "displaySpecialRule": {
+          "type": "string"
         }
       }
     }
